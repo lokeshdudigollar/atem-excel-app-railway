@@ -14,10 +14,6 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route("/debug-tesseract")
-def debug_tesseract():
-    path = which('tesseract')
-    return f"Tesseract found at: {path or 'it is Not found'}"
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
