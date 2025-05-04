@@ -1,12 +1,18 @@
-from flask import Flask
-from shutil import which
+from flask import Flask, render_template, request, send_file, session
+from PIL import Image
 import pytesseract
+import pandas as pd
+import os
+import cv2
+import numpy as np
+import re
+from io import BytesIO
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return "Flask + Tesseract App is Running"
+    return render_template('index.html')
 
 @app.route("/debug-tesseract")
 def debug_tesseract():
