@@ -1,6 +1,7 @@
 flask
 pillow
 pytesseract
+libgl1
 opencv-python
 pandas
 numpy
