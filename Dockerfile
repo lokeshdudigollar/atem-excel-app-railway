@@ -3,11 +3,13 @@ FROM python:3.11-slim
 # Install tesseract
 RUN apt-get update && apt-get install -y \
     tesseract-ocr \
+    libgl1-mesa-glx \
     libglib2.0-0 \
     libsm6 \
     libxrender1 \
     libxext6 \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set workdir and copy app
 WORKDIR /app
