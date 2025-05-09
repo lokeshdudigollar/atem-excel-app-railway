@@ -10,7 +10,7 @@ from io import BytesIO
 
 app = Flask(__name__)
 app.secret_key = 'ikolr'
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '/tmp/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 
@@ -99,7 +99,7 @@ def index():
                 extracted_data = split_into_key_value(cleaned_text, cleaned_conf, expected_fields)
                 image_name = re.search(r'\\(\d+)_processed\.jpg$', filepath) #uploads\1222_processed.jpg
                 print("image_name:",image_name)
-                return render_template('edit.html', data=extracted_data, image_name="download")
+                return render_template('edit.html', data=extracted_data, image_name=filepath)
 
         else:
             return 'No image file uploaded', 400
