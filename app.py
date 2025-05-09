@@ -69,7 +69,9 @@ def index():
         if 'image' in request.files:
             file = request.files['image']
             if file:
+                print("image got...", file)
                 filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+                print("filepath: ",filepath)
                 file.save(filepath)
                 filepath = preprocess_image(filepath)
                 session['image_filepath'] = filepath
