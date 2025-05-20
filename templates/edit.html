@@ -122,9 +122,53 @@
         .back-button:hover {
             background-color: #2980b9;
         }
+
+        .footer {
+            text-align: center;
+            padding: 12px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #666;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .scroll-to-footer {
+            position: sticky;
+            top: 20px; /* Keeps it always 20px from top while scrolling */
+            float: right;
+            margin-right: 20px;
+            z-index: 999;
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background-color: white;
+            color: #007BFF;
+            border: 2px solid #007BFF;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 41px;
+            font-size: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .scroll-to-footer:hover {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <a href="#page-footer"  title="Go to footer" class="scroll-to-footer">
+        <i class="fas fa-arrow-down"></i>
+    </a>
     <h1 style="text-align: center;">Extracted Data</h1>
     <p>***Below colors show likelihood of mistakes</p>
     <div class="legend">
@@ -174,6 +218,10 @@
             </a>
         </div>
     </form>
+    <footer class="footer" id="page-footer">
+        Built by <strong>Lokesh Dudigollar</strong> —
+        <a href="https://www.codeplab.com/" target="_blank">repo @ codeplab.com</a>
+    </footer>
     
 </body>
 </html>
