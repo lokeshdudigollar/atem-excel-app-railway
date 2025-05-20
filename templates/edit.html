@@ -50,9 +50,15 @@
 
         .legend {
             display: flex;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
             margin-top: 20px;
             margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .legend-items {
+            display: flex;
+            gap: 20px;
         }
 
         .legend-item {
@@ -60,6 +66,9 @@
             align-items: center;
             gap: 8px;
             font-weight: bold;
+        }
+        .home-button {
+            margin-left: auto;
         }
 
         .box {
@@ -73,11 +82,15 @@
         .box.yellow { background-color: yellow; }
 
         .bottom-section {
+            display: flex;
+            flex-direction: column;
             margin-top: 30px;
             text-align: center;
+            align-items: center;
         }
 
         .download-button {
+            width: 15%;
             background-color: #007bff;
             color: white;
             padding: 10px 18px;
@@ -91,15 +104,41 @@
         .download-button:hover {
             background-color: #0056b3;
         }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">Extracted Data</h1>
     <p>***Below colors show likelihood of mistakes</p>
     <div class="legend">
-        <div class="legend-item"><div class="box red"></div> Highly likely</div>
-        <div class="legend-item"><div class="box yellow"></div> Medium likely</div>
-        <div class="legend-item"><div class="box green"></div> Low chance</div>
+        <div class="legend-items">
+            <div class="legend-item"><div class="box red"></div> Highly likely</div>
+            <div class="legend-item"><div class="box yellow"></div> Medium likely</div>
+            <div class="legend-item"><div class="box green"></div> Low chance</div>
+        </div>
+
+        <div class="home button">
+            <a href="{{ url_for('index') }}">
+                <button type="button" class="back-button">Back to Home</button>
+            </a>
+        </div>
     </div>
 
     <form method="POST" action="/download_excel">
@@ -130,6 +169,9 @@
             <p>Done correcting mistakes?</p>
             <input type="hidden" name="image_name" value="{{ image_name }}">
             <button class="download-button" type="submit">Download Excel</button>
+            <a href="{{ url_for('index') }}">
+                <button type="button" class="back-button">Back to Home</button>
+            </a>
         </div>
     </form>
     

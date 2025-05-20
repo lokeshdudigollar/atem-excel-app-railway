@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Upload Image for Text Extraction</title>
+    <title>Atem-R-Tech</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <style>
         body {
             margin: 0;
@@ -47,18 +48,54 @@
         button:hover {
             background-color: #45a049;
         }
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #loader img {
+            width: 150px; /* adjust size as needed */
+            height: 150px;
+            object-fit: contain;
+        }
+        #main-content {
+            display: none;
+        }
     </style>
 </head>
 <body>
-
-    <h2>Upload Image for Text Extraction</h2>
-
-    <div class="upload-container">
-        <form action="/" method="POST" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*" required>
-            <button type="submit">Upload</button>
-        </form>
+    <div id="loader">
+        <img src="{{ url_for('static', filename='loader.gif') }}" alt="Loading..." />
     </div>
+
+    <div id="main-content">
+        <h2>Upload Image for Text Extraction</h2>
+
+        <div class="upload-container">
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+    <script>
+         // Force loader to show for given time
+        window.addEventListener("load", function () {
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+        }, 700); // adjust time as needed
+        });
+    </script>
+    
 
 </body>
 </html>
