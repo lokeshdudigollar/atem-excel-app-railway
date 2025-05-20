@@ -87,12 +87,17 @@
         </div>
     </div>
     <script>
-         // Force loader to show for given time
+        const MIN_LOADER_TIME = 700;
+        const start = Date.now();
+
         window.addEventListener("load", function () {
-        setTimeout(() => {
+            const elapsed = Date.now() - start;
+            const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
+
+            setTimeout(() => {
             document.getElementById("loader").style.display = "none";
             document.getElementById("main-content").style.display = "block";
-        }, 700); // adjust time as needed
+            }, remaining);
         });
     </script>
     
