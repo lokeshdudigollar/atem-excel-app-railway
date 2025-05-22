@@ -71,7 +71,8 @@ def index():
             if file:
                 print("image got...", file)
                 filepath = os.path.join(UPLOAD_FOLDER, file.filename)
-                print("filepath: ",filepath)
+                print("filepath: ",filepath) #/tmp/uploads/18.jpg
+                download_file_path = filepath.replace("/tmp/uploads/", "")
                 file.save(filepath)
                 filepath = preprocess_image(filepath)
                 session['image_filepath'] = filepath
@@ -101,7 +102,7 @@ def index():
                 extracted_data = split_into_key_value(cleaned_text, cleaned_conf, expected_fields)
                 image_name = re.search(r'[/\\](\d+)_processed\.jpg$', filepath) #uploads\1222_processed.jpg
                 print("image_name:",image_name)
-                return render_template('edit.html', data=extracted_data, image_name=image_name.group(1))
+                return render_template('edit.html', data=extracted_data, image_name=download_file_path)
 
         else:
             return 'No image file uploaded', 400
